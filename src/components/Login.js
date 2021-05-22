@@ -1,9 +1,12 @@
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { signInAPI } from '../actions'
-import { Redirect } from 'react-router'
+import { Redirect, useHistory } from 'react-router'
 
 function Login(props) {
+
+    const history = useHistory()
+
     return (
     <Container>
         {
@@ -26,7 +29,8 @@ function Login(props) {
                 
             </Hero>
             <Form>
-                <Google onClick = { () => props.signIn()}>
+                <Google onClick = { () => history.push('/home')}>
+                    
                     <img src="/images/google-icon.svg" alt= ""/>
                     Sign In With Google
                 </Google>
