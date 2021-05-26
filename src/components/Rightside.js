@@ -67,6 +67,9 @@ function Rightside(props) {
       position: relative;
       border: none;
       box-shadow: 0 0 0 1px rgb(0 0 0 / 15%), 0 0 0 rgb(0 0 0 / 20%);
+      @media(max-width:768px){
+        margin-top: 30px;
+      }
     `;
     
     const UserInfo = styled.div`

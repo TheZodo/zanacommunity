@@ -10,6 +10,42 @@ function Header(props) {
                     </a>
                 </Logo>
                 
+                <Nav>
+                    <NavListWrap>
+                        <NavList className="active">
+                            <a> 
+                                <span>Home</span>
+                            </a>
+                        </NavList>
+                        <NavList>
+                            <a> 
+                                <span>Notifications</span>
+                            </a>
+                        </NavList>
+                        <NavList>
+                            <a> 
+                                <span>Community</span>
+                            </a>
+                        </NavList>
+                        <NavList>
+                            <a> 
+                                <span>Messages</span>
+                            </a>
+                        </NavList>
+                        <User>
+                            <a>
+                                <img src="/images/user.svg"/>
+                                <img src="/images/down-icon.svg" />
+                            </a>
+
+                            <SignOut>
+                                <a>
+                                    SignOut
+                                </a>
+                            </SignOut>
+                        </User>
+                    </NavListWrap>
+                </Nav>
                 <Search>
                     <div>
                         <input type="text" placeholder="Search"/>
@@ -29,54 +65,14 @@ function Header(props) {
                     </SearchIcon>
                 </Search>
 
-                <Nav>
-                    <NavListWrap>
-                        <NavList className="active">
-                            <a> 
-                                <img src="/images/nav-home.svg"/>
-                                <span>Home</span>
-                            </a>
-                        </NavList>
-                        <NavList>
-                            <a> 
-                                <img src="/images/nav-notifications.svg"/>
-                                <span>Notifications</span>
-                            </a>
-                        </NavList>
-                        <NavList>
-                            <a> 
-                                <img src="/images/nav-network.svg"/>
-                                <span>Community</span>
-                            </a>
-                        </NavList>
-                        <NavList>
-                            <a> 
-                                <img src="/images/nav-messaging.svg"/>
-                                <span>Messages</span>
-                            </a>
-                        </NavList>
-                        <User>
-                            <a>
-                                <img src="/images/user.svg"/>
-                                <span>Me</span>
-                                <img src="/images/down-icon.svg" />
-                            </a>
-
-                            <SignOut>
-                                <a>
-                                    SignOut
-                                </a>
-                            </SignOut>
-                        </User>
-                    </NavListWrap>
-                </Nav>
+               
             </Content>
         </Container>
     )
-}
+} 
 
 const Container = styled.div`
-    background-color: white;
+    background: linear-gradient(90deg, rgba(122,0,0,1) 0%, rgba(181,17,17,1) 36%, rgba(189,50,1,1) 100%);
     border-bottom: 1px solid rgba(0,0,0,0.06);
     left: 0;
     padding: 0 24px;
@@ -86,15 +82,17 @@ const Container = styled.div`
     width: 100vw;
 `
 
+
+
 const Content = styled.div`
     display: flex;
     align-items: center;
     margin: 0 auto;
     min-height: 100%;
-    max-width: 1128px;    
+    max-width: 100%;
 `
 const Logo = styled.span`
-    margin-right: 8px;
+    margin: 8px;
     font-size: 0px
     
 `
@@ -102,6 +100,7 @@ const Search = styled.div`
     opacity: 1;
     flex-grow:1;
     position: relative;
+    
     & > div {
         max-width: 280px;
         input{
@@ -120,6 +119,9 @@ const Search = styled.div`
         
         }
         
+    }
+    @media(max-width: 768px){
+        display: none;
     }
 `
 
@@ -142,19 +144,14 @@ const SearchIcon = styled.div`
 const Nav = styled.nav`
     /* margin-left: auto; */
     display: block;
-    @media(max-width:768px){
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        background: white;
-        width: 100%;
-    }
+
 `
 const NavListWrap = styled.ul`
     display: flex;
-    flex-wrap: nowrap;
+    /* flex-wrap: nowrap; */
     list-style: none;
-    justify-content: space-around;
+    margin-left: 200px;
+    justify-content: space-between;
     .active{
         span:after{
             content: '';
@@ -165,12 +162,15 @@ const NavListWrap = styled.ul`
             position: absolute;
             transition: transform 0.2a ease-in-out;
             width: 100%; 
-            border-color: rgba(0,0,0,0.9);
+            border-color: #e3a126;
+;
         }
     }
+
 `
 const NavList = styled.li`
     display: flex;
+    margin-right: 50px;
     align-items: center;
     a{
         align-items: center;
@@ -186,18 +186,21 @@ const NavList = styled.li`
         position: relative;
         text-decoration: none;
         span{
-            color: rgba(0,0,0,0.6);
+            color: white;
+            font-size: 14px;
             display: flex;
             align-items: center;
         }
         @media(max-width: 768px){
             min-width:70px;
+
+	}
         }
     }
     &:hover, &:active{
         a{
             span{
-                color: rgba(0,0,0,0.9);
+                color: #e3a126;
             }
         }
         cursor: pointer;
@@ -217,6 +220,7 @@ const SignOut = styled.div`
 `
 
 const User = styled(NavList)`
+    margin-top: 10px;
     a > svg {
         width: 24px;
         border-radius: 50%;
@@ -229,6 +233,7 @@ const User = styled(NavList)`
     span{
         display: flex;
         align-items: center;
+        color: white;
     }
 
     &:hover{
