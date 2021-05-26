@@ -1,26 +1,29 @@
+import Dashboard from 'app/dashboard'
+import Landing from 'app/landing'
+import Logo from 'app/logo'
+import useAuth from 'libs/auth-react/hooks/useAuth'
+import Auth from 'libs/components/auth'
+import Card from 'libs/components/card'
+import Text from 'libs/components/text'
 import React from 'react'
-import './App.css'
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-import Login from './components/Login'
-import Header from './components/Header'
-import Home from './components/Home'
+import { Route, Switch } from 'react-router'
 
-function App() {
+export default function App() {
+  
+  const {isAuthenticated} = useAuth()
+
+  console.log({isAuthenticated})
   return (
-    <div className="App">
-        <Router>
-          <Switch>
-            <Route exact path='/'>
-              <Login />
-            </Route>
-            <Route path="/home">
-              <Header/>
-              <Home />
-            </Route>
-          </Switch>
-        </Router>
-    </div>
+    <Switch>
+      <Route path='/'>
+        <Auth
+          landingComponent={<Landing />}
+          dashboardComponent={<Dashboard />}
+          logo={<Logo
+            showText={false}
+          />}
+        />
+      </Route>
+    </Switch>
   )
 }
-
-export default App
